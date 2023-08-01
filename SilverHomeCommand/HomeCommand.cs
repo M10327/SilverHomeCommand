@@ -69,6 +69,7 @@ namespace SilverHomeCommand
 
         public async void GoHomeInstant(UnturnedPlayer p, Vector3 point)
         {
+            SilverHomeCommand.Instance.ActiveHomes.Remove((ulong)p.CSteamID);
             point.y += 0.5f;
             p.Teleport(point, 0);
             await Task.Delay(20);
@@ -81,7 +82,6 @@ namespace SilverHomeCommand
             {
                 UnturnedChat.Say(p, SilverHomeCommand.Instance.Translate("FailedNoSpace"), SilverHomeCommand.Instance.MessageColor);
             }
-            SilverHomeCommand.Instance.ActiveHomes.Remove((ulong)p.CSteamID);
         }
     }
 }
